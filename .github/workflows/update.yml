@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Clone redlib repository
         run: |
-          git clone https://github.com/redlib-org/redlib.git #/opt/redlib
+          git clone https://github.com/redlib-org/redlib.git /opt/redlib
 
 #      - name: Set up Docker Buildx
 #        uses: docker/setup-buildx-action@v2
@@ -27,5 +27,5 @@ jobs:
       - name: Build and Publish Docker image
         run: |
           IMAGE_NAME="ghcr.io/$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')/redlib:latest"
-          docker build -f Dockerfile.alpine -t $IMAGE_NAME . #/opt/redlib
+          docker build -f /opt/redlib/Dockerfile.alpine -t $IMAGE_NAME /opt/redlib
           docker push $IMAGE_NAME
